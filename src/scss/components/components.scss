@@ -1,0 +1,13 @@
+@mixin mymixin {
+  border-radius: 0;
+}
+
+
+//using var
+
+$font: #fff;
+
+.coder {
+  @include mymixin;
+  color: $font;
+}
