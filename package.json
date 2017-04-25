@@ -27,6 +27,13 @@
     "gulp-watch": "^4.3.11",
     "imagemin-pngquant": "^5.0.0",
     "jquery": "^3.2.1",
+    "node-bourbon": "^4.2.8",
+    "node-neat": "^2.0.0-beta.0",
     "tether": "^1.4.0"
+  },
+  "dependencies": {
+    "angular": "^1.6.4",
+    "bourbon": "^4.3.4",
+    "bourbon-neat": "^2.0.0"
   }
 }

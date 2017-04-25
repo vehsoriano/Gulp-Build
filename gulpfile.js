@@ -11,6 +11,8 @@ var gulp = require('gulp'),
     pngquant = require('imagemin-pngquant'),
     gulpCopy = require('gulp-copy'),
     sourcemaps = require('gulp-sourcemaps'),
+    bourbon = require('node-bourbon'),
+    neat = require('node-neat'),
 	  reload = browserSync.reload;
 
 var paths = {
@@ -25,8 +27,13 @@ var paths = {
   cssDest       : 'dist/assets/css',
   scss          : 'src/scss/app.scss',
   scssGlob      : 'src/scss/**/*.scss',
-  javascripts   : 'src/js/*.js'
+  javascripts   : 'src/js/*.js',
+  scssPaths       : ['src/scss/components/*.scss', 'src/scss/fonts/*.scss', 'src/scss/pages/*.scss']
 }
+
+// bourbon and neat includePaths
+// bourbon.includePaths = paths.scssPaths;
+// neat.includePaths = paths.scssPaths;
 
 // #1 Static server
 gulp.task('browser-sync', function() {
@@ -62,7 +69,9 @@ gulp.task('sass', function () {
   return gulp.src(paths.scss)
     .pipe(plumber())
     .pipe(sourcemaps.init())
-    .pipe(sass().on('error', sass.logError))
+    .pipe(sass({
+      includePaths: paths.scssPaths
+    }).on('error', sass.logError))
     .pipe(concat('app.css'))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(paths.cssDest))
